@@ -53,17 +53,17 @@ class Post(db.Model):
     def __repr__(self):
         return '<Post {}>'.format(self.body)
 
-    def save_changes(self, form, file, userId, new=False):
+    def save_changes(self, form, file, user_id, new=False):
         self.title = form.title.data
         self.author = form.author.data
         self.body = form.body.data
-        self.user_id = userId
+        self.user_id = user_id
 
         if file:
             filename = secure_filename(file.filename)
             fileextension = filename.rsplit('.', 1)[1]
-            Randomfilename = id_generator()
-            filename = Randomfilename + '.' + fileextension
+            random_filename = id_generator()
+            filename = random_filename + '.' + fileextension
             try:
                 container_client = blob_service.get_container_client(blob_container)
 
