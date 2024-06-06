@@ -5,7 +5,7 @@ from datetime import datetime
 from azure.storage.blob import BlobServiceClient  # , BlockBlobService
 from flask import flash
 from flask_login import UserMixin
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from FlaskWebProject import app, db, login
